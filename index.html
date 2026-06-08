@@ -8,70 +8,105 @@
 <meta name="description" content="同框（DualCamera）App 隐私政策：不收集、不存储、不上传任何个人信息，所有功能在本地完成。">
 <style>
   :root{
-    --bg:#0b1020; --bg2:#141225; --card:rgba(255,255,255,.04);
-    --line:rgba(255,255,255,.10); --fg:#f4f5f8; --muted:#a6abbd;
-    --accent:#ffd60a; --accent-soft:rgba(255,214,10,.14);
+    --page:#ededee;      /* 页面底色 */
+    --sheet:#ffffff;     /* 文档纸面 */
+    --ink:#1b1c1e;       /* 正文 */
+    --ink-strong:#000;   /* 标题 */
+    --muted:#6b6d72;     /* 次要文字 */
+    --faint:#9a9ca1;     /* 更弱 */
+    --rule:#e0e1e3;      /* 分隔线 */
+    --rule-strong:#c7c9cc;
+    --callout:#f4f4f5;   /* 提示块 */
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0; color:var(--fg);
-    background:linear-gradient(180deg,#0b1020 0%,#141225 100%);
-    background-attachment:fixed;
-    font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    margin:0; color:var(--ink); background:var(--page);
+    font:16px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:760px;margin:0 auto;padding:48px 22px 80px}
-  header{text-align:center;margin-bottom:36px}
-  .logo{
-    width:84px;height:84px;border-radius:20px;margin:0 auto 18px;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--accent-soft);border:1px solid var(--line);
-    font-size:30px;font-weight:800;color:var(--accent);letter-spacing:1px;
+  .sheet{
+    max-width:740px; margin:0 auto; background:var(--sheet);
+    border-left:1px solid var(--rule); border-right:1px solid var(--rule);
+    min-height:100vh; padding:64px 56px 72px;
   }
-  h1{font-size:30px;margin:0 0 6px;font-weight:800;letter-spacing:.5px}
-  .updated{color:var(--muted);font-size:13px;margin:0}
-  .promise{
-    background:var(--accent-soft);border:1px solid rgba(255,214,10,.3);
-    border-radius:16px;padding:16px 18px;margin:28px 0 8px;
-    font-weight:600;color:#fff7d6;
+  /* 文档抬头 */
+  .doc-head{text-align:center; padding-bottom:30px; border-bottom:2px solid var(--ink-strong); margin-bottom:8px}
+  .app-icon{
+    width:88px;height:88px;border-radius:20px;display:block;margin:0 auto 18px;
+    border:1px solid rgba(0,0,0,.08); box-shadow:0 1px 3px rgba(0,0,0,.08);
   }
-  section{
-    background:var(--card);border:1px solid var(--line);
-    border-radius:16px;padding:6px 20px 18px;margin:18px 0;
+  .doc-kicker{font-size:12px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin:0 0 10px}
+  h1{font-size:27px;letter-spacing:1px;margin:0 0 4px;color:var(--ink-strong);font-weight:700}
+  .doc-sub{font-size:13px;letter-spacing:2px;color:var(--faint);margin:0 0 16px;text-transform:uppercase}
+  .meta{font-size:12.5px;color:var(--muted);margin:0}
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* 承诺 / 摘要块 —— 报告式 callout */
+  .summary{
+    margin:30px 0 8px; padding:16px 20px; background:var(--callout);
+    border-left:3px solid var(--ink); font-size:14.5px; color:var(--ink);
   }
-  h2{font-size:18px;margin:20px 0 8px;font-weight:700;color:#fff}
-  h2 .num{color:var(--accent);margin-right:6px}
-  p{margin:8px 0;color:#e7e9f0}
-  ul{margin:8px 0;padding-left:4px;list-style:none}
-  li{position:relative;padding-left:20px;margin:6px 0;color:#dfe2ec}
-  li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.8}
-  .divider{display:flex;align-items:center;gap:12px;margin:34px 0 8px;color:var(--muted);font-size:12px;letter-spacing:2px}
-  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
-  .contact a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
-  .contact a:hover{border-bottom-color:var(--accent)}
-  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;line-height:1.9}
-  @media (prefers-color-scheme: light){
-    body{background:linear-gradient(180deg,#f6f7fb 0%,#eef0f6 100%);color:#1a1c22}
-    .logo{background:rgba(255,184,0,.16);border-color:rgba(0,0,0,.08);color:#caa000}
-    .promise{background:rgba(255,184,0,.12);border-color:rgba(255,184,0,.4);color:#5a4b00}
-    section{background:#fff;border-color:rgba(0,0,0,.07)}
-    h1,h2{color:#13151b}
-    p,li{color:#33363f}
-    .updated,.divider,footer{color:#6b6f7a}
-    h2 .num,.contact a{color:#b8920a}
+  .summary .lead{font-weight:700;letter-spacing:1px;font-size:11px;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:4px}
+
+  /* 章节 */
+  section{padding:6px 0 2px}
+  h2{
+    font-size:16px;font-weight:700;color:var(--ink-strong);
+    margin:28px 0 10px; padding-bottom:8px; border-bottom:1px solid var(--rule);
+  }
+  h2 .num{display:inline-block;min-width:1.6em;color:var(--faint);font-variant-numeric:tabular-nums}
+  h3{font-size:14px;font-weight:700;color:var(--ink-strong);margin:18px 0 6px;letter-spacing:.5px}
+  p{margin:9px 0;color:var(--ink)}
+  ul{margin:9px 0;padding-left:0;list-style:none}
+  li{position:relative;padding-left:18px;margin:6px 0;color:var(--ink)}
+  li::before{content:"—";position:absolute;left:0;top:0;color:var(--faint)}
+  strong{color:var(--ink-strong);font-weight:600}
+
+  /* 大分节标题（知识产权 / 免 ICP） */
+  .part{
+    display:flex;align-items:center;gap:14px;margin:46px 0 6px;
+    font-size:12px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;
+  }
+  .part::before,.part::after{content:"";flex:1;height:1px;background:var(--rule-strong)}
+
+  a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--rule-strong)}
+  a:hover{text-decoration-color:var(--ink)}
+
+  footer{
+    margin-top:48px;padding-top:22px;border-top:1px solid var(--rule);
+    text-align:center;color:var(--faint);font-size:12px;line-height:2;
+  }
+
+  @media (max-width:600px){ .sheet{padding:48px 22px 56px;border-left:none;border-right:none} }
+
+  /* 深色模式：仍以黑白灰为主，不引入彩色 */
+  @media (prefers-color-scheme: dark){
+    :root{
+      --page:#000; --sheet:#0e0e10; --ink:#dcdde0; --ink-strong:#fff;
+      --muted:#9a9ca1; --faint:#6b6d72; --rule:#26272b; --rule-strong:#3a3b40;
+      --callout:#17181b;
+    }
+    .doc-head{border-bottom-color:#fff}
+    .app-icon{border-color:rgba(255,255,255,.12);box-shadow:none}
+    .summary{border-left-color:#fff}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="logo">同框</div>
+<article class="sheet">
+  <header class="doc-head">
+    <img class="app-icon" src="icon.png" alt="同框 App 图标" width="88" height="88">
+    <p class="doc-kicker">同框 · DualCamera</p>
     <h1>隐私政策</h1>
-    <p class="updated">最后更新：2026 年 5 月 31 日</p>
+    <p class="doc-sub">Privacy Policy</p>
+    <p class="meta">文档版本生效日期：<b>2026 年 5 月 31 日</b></p>
   </header>
 
-  <div class="promise">简要承诺：本 App 不收集、不存储、不上传你的任何个人信息或拍摄内容。所有功能在本地完成。</div>
+  <div class="summary">
+    <span class="lead">摘要承诺 / Summary</span>
+    本 App 不收集、不存储、不上传你的任何个人信息或拍摄内容。所有功能在本地完成。
+  </div>
 
   <section>
     <h2><span class="num">1.</span>我们不做什么</h2>
@@ -125,7 +160,7 @@
     <p>你可以在 iPhone 的「设置 → 隐私 → 相机 / 麦克风 / 照片」中，随时撤回对本 App 的权限授予。</p>
   </section>
 
-  <section class="contact">
+  <section>
     <h2><span class="num">8.</span>联系我们</h2>
     <p>如对本隐私政策有任何疑问，请通过以下方式联系开发者：</p>
     <ul>
@@ -133,7 +168,7 @@
     </ul>
   </section>
 
-  <div class="divider">知识产权与原创性声明</div>
+  <p class="part">知识产权与原创性声明</p>
 
   <section>
     <h2><span class="num">9.</span>完全原创声明</h2>
@@ -180,23 +215,20 @@
     <p>我们尊重每一位开发者的创造力，也希望同行尊重本团队的劳动成果。如你正在开发类似的前后摄影像类产品，建议从产品定位、交互思路、视觉风格上做出明显区分，避免无意中陷入相似性纠纷。如对授权或合作有兴趣，欢迎通过上方邮箱联系我们。</p>
   </section>
 
-  <div class="divider">免 ICP 备案说明</div>
+  <p class="part">免 ICP 备案说明</p>
 
   <section>
-    <p>依据《互联网信息服务管理办法》（国务院第 292 号令）及《非经营性互联网信息服务备案管理办法》（信息产业部令第 33 号），互联网信息服务备案要求适用于"通过互联网向上网用户提供信息的服务活动"。</p>
+    <p>依据《互联网信息服务管理办法》（国务院第 292 号令）及《非经营性互联网信息服务备案管理办法》（信息产业部令第 33 号），互联网信息服务备案要求适用于“通过互联网向上网用户提供信息的服务活动”。</p>
     <p>本 App 的实际运行情况：</p>
     <ul>
       <li>启动后不发起任何网络请求，不与任何远端服务器通信。</li>
       <li>不下载、不上传、不分发任何在线内容。</li>
       <li>所有功能（取景、拍摄、合成、保存）均在用户设备本地完成。</li>
-      <li>不构成"互联网信息服务"。</li>
+      <li>不构成“互联网信息服务”。</li>
     </ul>
-    <p>因此，本类纯本地工具型应用属于 ICP 备案制度的免除适用范围。</p>
-    <p>我们对本声明的真实性负责。</p>
-  </section>
+    <p>因此，本类纯本地工具型应用属于 ICP 备案制度的免除适用范围。我们对本声明的真实性负责。</p>
 
-  <section>
-    <h2>技术声明</h2>
+    <h3>技术声明</h3>
     <ul>
       <li>本应用使用 Apple 官方 AVFoundation / Core Image / Photos 框架，所有处理在本机芯片完成。</li>
       <li>不依赖任何云端推理、不依赖任何远端模型。</li>
@@ -207,9 +239,9 @@
 
   <footer>
     同框 · DualCamera<br>
-    © 2026 同框团队 保留所有权利<br>
-    联系邮箱：<a href="mailto:yzs13968803946@qq.com" style="color:inherit">yzs13968803946@qq.com</a>
+    © 2026 同框团队 · 保留所有权利<br>
+    联系邮箱：<a href="mailto:yzs13968803946@qq.com">yzs13968803946@qq.com</a>
   </footer>
-</div>
+</article>
 </body>
 </html>
